@@ -1,16 +1,18 @@
 const express = require("express");
 require("dotenv").config();
 
+const {DbOptions} = require("./KnexConfig/config")
+const knex = require('knex')(DbOptions);
+
+//const db = require("./config/db");
 //const connection = require("./config/configbd");
 //connection();
 
 const app = express();
 app.use(express.json());
-
 const multer = require('multer');
 const path = require('path');
 
-//const db = require("./config/db");
 
 
 const storage = multer.diskStorage({
@@ -58,6 +60,17 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
 });
 
 
+
+
+app.get("/api/users", function(req, res, next) {
+  knex('users').where({})
+  .then((rows) => {
+    res.json(rows).status(200)
+  }).catch((err) => { console.log( err); throw err })
+  .finally(() => {
+      knex.destroy();
+  });
+});
 
 
 
