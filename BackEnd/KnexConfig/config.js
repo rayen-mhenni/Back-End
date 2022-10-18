@@ -1,12 +1,13 @@
  
+ require("dotenv").config();
  const DbOptions ={
     client: 'mysql',
     connection: {
-      host : '45.13.252.43',
+      host : process.env.DB_HOST,
       port : 3306,
-      user : 'u468378300_portalite',
-      password : 'Portalite=22',
-      database : 'u468378300_portalite'
+      user : process.env.DB_USER,
+      password : process.env.DB_PASS,
+      database : process.env.DB_NAME
     }
     
   };

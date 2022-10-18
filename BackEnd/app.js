@@ -1,13 +1,5 @@
 const express = require("express");
 require("dotenv").config();
-
-const {DbOptions} = require("./KnexConfig/config")
-const knex = require('knex')(DbOptions);
-
-//const db = require("./config/db");
-//const connection = require("./config/configbd");
-//connection();
-
 const app = express();
 app.use(express.json());
 const multer = require('multer');
@@ -62,18 +54,8 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
 
 
 
-app.get("/api/users", function(req, res, next) {
-  knex('users').where({})
-  .then((rows) => {
-    res.json(rows).status(200)
-  }).catch((err) => { console.log( err); throw err })
-  .finally(() => {
-      knex.destroy();
-  });
-});
-
-
-
+const UserRoutes = require("./Routers/usersRouters");
+app.use("/api/users", UserRoutes);
 
 app.get("/", (req, res) => {
   res.send("Api is Running Boy :=) ");
@@ -90,16 +72,12 @@ app.use((req, res, next) => {
   next();
 });
 
-//app.use("/api/test", TestRoutes);
-
- 
 
 
 
-
-//process.env.PORT
-app.listen(5000, () => {
-  console.log("server started at port 5000 ");
+app.listen(process.env.PORT, () => {
+  console.log("server started at port " + process.env.PORT + " Connecting To Data Base " + 
+  process.env.DB_NAME);
 });
 
 
