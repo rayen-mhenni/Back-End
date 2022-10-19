@@ -57,6 +57,9 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
 const UserRoutes = require("./Routers/usersRouters");
 app.use("/api/users", UserRoutes);
 
+const ArtilesRoutes = require("./Routers/articlesRouters");
+app.use("/api/articles", ArtilesRoutes);
+
 app.get("/", (req, res) => {
   res.send("Api is Running Boy :=) ");
 });
@@ -73,7 +76,18 @@ app.use((req, res, next) => {
 });
 
 
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
+
+module.exports = function(app) {
+  app.use(
+    '/api',
+    createProxyMiddleware({
+      target: 'http://siteurl1.com',
+      changeOrigin: true,
+  })
+);
+};
 
 app.listen(process.env.PORT, () => {
   console.log("server started at port " + process.env.PORT + " Connecting To Data Base " + 
