@@ -6,6 +6,16 @@ const multer = require('multer');
 const path = require('path');
 
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "*");
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "PUT,POST,PATCH,DELETE,GET");
+    return res.status(200).json({});
+  }
+  next();
+});
+
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
@@ -60,31 +70,17 @@ app.use("/api/users", UserRoutes);
 const ArtilesRoutes = require("./Routers/articlesRouters");
 app.use("/api/articles", ArtilesRoutes);
 
+const NavigationsRoutes = require("./Routers/navigationsRouters");
+app.use("/api/navigations", NavigationsRoutes);
+
 app.get("/", (req, res) => {
   res.send("Api is Running Boy :=) ");
 });
 
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "*");
-  if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "PUT,POST,PATCH,DELETE,GET");
-    return res.status(200).json({});
-  }
-  next();
-});
 
 
-const { createProxyMiddleware } = require('http-proxy-middleware');
 
-  app.use(
-    '/api',
-    createProxyMiddleware({
-      target: 'http://127.0.0.1:3000',
-      changeOrigin: true,
-  })
-);
 
 
 app.listen(process.env.PORT, () => {
