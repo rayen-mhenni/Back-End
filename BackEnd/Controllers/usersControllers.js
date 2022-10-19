@@ -121,7 +121,7 @@ const resetpass = async (req, res) => {
     .then((res) => res[0]);
 
 
-  if (!user) res.status(400).send({ message: "Email Not found !" });
+  if (!user) res.status(400).send({ error: "Email Not found !" });
   else {
 
     const token = jwt.sign(user?.id, process.env.JWT_KEY);
@@ -138,7 +138,7 @@ const resetpass = async (req, res) => {
 const updatepass = async (req, res) => {
   const id = req.params.id;
   if (!req.body) {
-    res.status(400).send({ message: "Content can not be empty!" });
+    res.status(400).send({ error: "Content can not be empty!" });
     return;
   }
   const Password=req.body.password;
