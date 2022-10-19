@@ -78,16 +78,14 @@ app.use((req, res, next) => {
 
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
-
-module.exports = function(app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'http://siteurl1.com',
+      target: 'http://127.0.0.1:3000',
       changeOrigin: true,
   })
 );
-};
+
 
 app.listen(process.env.PORT, () => {
   console.log("server started at port " + process.env.PORT + " Connecting To Data Base " + 
