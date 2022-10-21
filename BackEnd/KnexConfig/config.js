@@ -1,13 +1,10 @@
-require("dotenv").config();
-const DbOptions = {
-  client: "mysql",
+module.exports = require('knex')({
+  client: "mysql2",
   connection: {
-    host: process.env.DB_HOST,
+    host:'45.13.252.43',
     port: 3306,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME,
-  },
-};
-
-module.exports = { DbOptions };
+    user: 'u468378300_portalite',
+    password: 'Portalite=22',
+    database: 'u468378300_portalite',
+  }
+});

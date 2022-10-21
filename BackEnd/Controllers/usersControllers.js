@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { DbOptions } = require("../KnexConfig/config");
-const knex = require("knex")(DbOptions);
+const knex = require('../KnexConfig/config');
 
 require("dotenv").config();
 
@@ -41,47 +41,35 @@ const Adduser = async (req, res) => {
   const { Email, Password, UserName } = req.body;
   const encryptedPassword = await bcrypt.hash(Password, 10);
 
-  knex("users")
+  const user = await knex("users")
     .where({ email: Email })
-    .first()
-    .then((user) => {
-      if (user) {
-        res.json({ error: "email is already used" });
-      } else {
-        knex("users")
-          .insert(
-            {
-              email: Email,
-              password: encryptedPassword,
-              name: UserName,
-              created_at: Date.now(),
-            },
-            "eee"
-          )
-          .then((user) => {
-            res.json({ message: "User Created " });
+    .then((user) => user[0]);
+  if (user) {
+    res.json({ error: "email is already used" });
+  } else {
+    knex("users")
+      .insert(
+        {
+          email: Email,
+          password: encryptedPassword,
+          name: UserName,
+          created_at: Date.now(),
+        },
+        "eee"
+      )
+      .then((user) => {
+        res.json({ message: "User Created " });
+      })
+      .catch((err) => {
+        res
+          .json({
+            user: {},
+            error: "check your Data",
           })
-          .catch((err) => {
-            res
-              .json({
-                user: {},
-                error: "check your Data",
-              })
-              .status(401);
-          });
-      }
-    })
-    .catch((err) => {
-      res
-        .json({
-          user: {},
-          error: "check your Data",
-        })
-        .status(401);
-    })
-    .finally(() => {
-      knex.destroy();
-    });
+          .status(401);
+      })
+      .finally(() => knex.destroy());
+  }
 };
 
 const updateuser = async (req, res) => {
@@ -120,10 +108,8 @@ const resetpass = async (req, res) => {
     .where({ email: email })
     .then((res) => res[0]);
 
-
   if (!user) res.status(400).send({ error: "Email Not found !" });
   else {
-
     const token = jwt.sign(user?.id, process.env.JWT_KEY);
 
     res.json({
@@ -134,17 +120,16 @@ const resetpass = async (req, res) => {
   }
 };
 
-
 const updatepass = async (req, res) => {
   const id = req.params.id;
   if (!req.body) {
     res.status(400).send({ error: "Content can not be empty!" });
     return;
   }
-  const Password=req.body.password;
+  const Password = req.body.password;
   const encryptedPassword = await bcrypt.hash(Password, 10);
 
-    knex("users")
+  knex("users")
     .update({
       password: encryptedPassword,
       updated_at: Date.now(),
@@ -161,8 +146,6 @@ const updatepass = async (req, res) => {
         })
         .status(401);
     });
-
-
 };
 
 const getusers = async (req, res) => {
@@ -186,5 +169,5 @@ module.exports = {
   updateuser,
   getusers,
   resetpass,
-  updatepass
+  updatepass,
 };
