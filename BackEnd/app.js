@@ -76,7 +76,6 @@ app.use("/api/socials", SocialsRoutes);
 const SlidersRoutes = require("./Routers/slidersRouters");
 app.use("/api/sliders", SlidersRoutes);
 
-
 const InformationsRoutes = require("./Routers/informationsRouters");
 app.use("/api/informations", InformationsRoutes);
 
@@ -92,9 +91,6 @@ app.use("/api/parteners", PartenersRoutes);
 const ReservationRoutes = require("./Routers/reservationRouters");
 app.use("/api/reservation", ReservationRoutes);
 
-
-
-
 const SimulationRoutes = require("./Routers/simulationsRouters");
 app.use("/api/simulations", SimulationRoutes);
 
@@ -104,8 +100,6 @@ app.use("/api/services", servicesRoutes);
 app.get("/", (req, res) => {
   res.send("Api is Running Boy :=) ");
 });
-
-
 
 app.listen(process.env.PORT, () => {
   console.log(
