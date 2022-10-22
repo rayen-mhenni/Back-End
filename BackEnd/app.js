@@ -58,6 +58,7 @@ app.use("/api/users", UserRoutes);
 const ArtilesRoutes = require("./Routers/articlesRouters");
 app.use("/api/articles", ArtilesRoutes);
 
+//Oussama....
 const ConfigRoutes = require("./Routers/configRouters");
 app.use("/api/config", ConfigRoutes);
 
@@ -70,8 +71,14 @@ app.use("/api/informations", InformationsRoutes);
 const InfosRoutes = require("./Routers/infosRouters");
 app.use("/api/infos", InfosRoutes);
 
-const opinionsRoutes = require("./Routers/opinionsRouters");
-app.use("/api/opinions", opinionsRoutes);
+const OpinionsRoutes = require("./Routers/opinionsRouters");
+app.use("/api/opinions", OpinionsRoutes);
+
+const PartenersRoutes = require("./Routers/partenersRouters");
+app.use("/api/parteners", PartenersRoutes);
+
+const ReservationRoutes = require("./Routers/reservationRouters");
+app.use("/api/reservation", ReservationRoutes);
 
 
 
