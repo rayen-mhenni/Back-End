@@ -55,15 +55,26 @@ app.post("/api/upload", upload.single("image"), (req, res) => {
 const UserRoutes = require("./Routers/usersRouters");
 app.use("/api/users", UserRoutes);
 
-const ArtilesRoutes = require("./Routers/articlesRouters");
-app.use("/api/articles", ArtilesRoutes);
+const ArticlesRoutes = require("./Routers/articlesRouters");
+app.use("/api/articles", ArticlesRoutes);
 
-//Oussama....
+const WeareRoutes = require("./Routers/weareRouters");
+app.use("/api/weare", WeareRoutes);
+
+const TeamsRoutes = require("./Routers/teamsRouters");
+app.use("/api/teams", TeamsRoutes);
+
 const ConfigRoutes = require("./Routers/configRouters");
 app.use("/api/config", ConfigRoutes);
 
 const ContactRoutes = require("./Routers/contactRouters");
 app.use("/api/contact", ContactRoutes);
+
+const SocialsRoutes = require("./Routers/socialsRouters");
+app.use("/api/socials", SocialsRoutes);
+
+const SlidersRoutes = require("./Routers/slidersRouters");
+app.use("/api/sliders", SlidersRoutes);
 
 const InformationsRoutes = require("./Routers/informationsRouters");
 app.use("/api/informations", InformationsRoutes);
@@ -86,6 +97,8 @@ app.use("/api/reservation", ReservationRoutes);
 app.get("/", (req, res) => {
   res.send("Api is Running Boy :=) ");
 });
+
+
 
 app.listen(process.env.PORT, () => {
   console.log(
