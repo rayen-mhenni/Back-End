@@ -73,6 +73,9 @@ app.use("/api/sliders", SlidersRoutes);
 const SimulationRoutes = require("./Routers/simulationsRouters");
 app.use("/api/simulations", SimulationRoutes);
 
+const servicesRoutes = require("./Routers/servicesRouters");
+app.use("/api/services", servicesRoutes);
+
 app.get("/", (req, res) => {
   res.send("Api is Running Boy :=) ");
 });
