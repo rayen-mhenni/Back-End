@@ -96,12 +96,12 @@ const updateuser = async (req, res) => {
 };
 
 const resetpass = async (req, res) => {
-  if (!req.query || !req.query.email) {
+  if (!req.body || !req.body.email) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
 
-  const { email } = req.query;
+  const { email } = req.body;
 
   const user = await knex("users")
     .where({ email: email })
