@@ -8,7 +8,7 @@ const verifyToken = require("../Middellware/AuthMiddelware");
 
 router.route("/add").post(Addreservation);
 router.route("/").get(verifyToken, getreservation);
-router.route("/update/:id").post(verifyToken, updatereservation);
-router.route("/delete/:id").post(verifyToken, deletereservation);
+router.route("/update/:id").put(verifyToken, updatereservation);
+router.route("/update/:id").delete(verifyToken, deletereservation);
 
 module.exports = router;

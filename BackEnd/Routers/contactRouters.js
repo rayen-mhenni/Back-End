@@ -7,7 +7,7 @@ const verifyToken = require("../Middellware/AuthMiddelware");
 
 router.route("/add").post(Addcontact);
 router.route("/").get(verifyToken, getcontacts);
-router.route("/update/:id").post(verifyToken, updatecontact);
-router.route("/delete/:id").post(verifyToken, deletecontacts);
+router.route("/update/:id").put(verifyToken, updatecontact);
+router.route("/update/:id").delete(verifyToken, deletecontacts);
 
 module.exports = router;
