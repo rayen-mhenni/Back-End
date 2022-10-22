@@ -70,8 +70,7 @@ app.use("/api/users", UserRoutes);
 const ArtilesRoutes = require("./Routers/articlesRouters");
 app.use("/api/articles", ArtilesRoutes);
 
-const NavigationsRoutes = require("./Routers/navigationsRouters");
-app.use("/api/navigations", NavigationsRoutes);
+
 
 app.get("/", (req, res) => {
   res.send("Api is Running Boy :=) ");

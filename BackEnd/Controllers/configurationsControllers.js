@@ -7,11 +7,11 @@ require("dotenv").config();
 
 const Addarticle = async (req, res) => {
   const { author, content, title , image } = req.body;
-        knex("articles")
+        knex("configurations")
           .insert(
             {
-              author,
-               content,
+              frais_gestion,
+              ind_repas,
                 title ,
                  image ,
               created_at: Date.now(),
