@@ -158,9 +158,7 @@ const getusers = async (req, res) => {
       console.log(err);
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 module.exports = {

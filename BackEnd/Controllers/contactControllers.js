@@ -77,9 +77,7 @@ const deletecontacts = async (req, res) => {
       console.log(err);
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 
@@ -94,9 +92,7 @@ const getcontacts = async (req, res) => {
       console.log(err);
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 

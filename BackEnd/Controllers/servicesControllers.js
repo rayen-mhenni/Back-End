@@ -66,9 +66,7 @@ const deleteservices = async (req, res) => {
     .catch((err) => {
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 const getservices = async (req, res) => {
@@ -80,9 +78,7 @@ const getservices = async (req, res) => {
       console.log(err);
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 module.exports = {

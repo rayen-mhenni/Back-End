@@ -60,9 +60,7 @@ const deleteparteners = async (req, res) => {
       console.log(err);
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 const getparteners = async (req, res) => {
@@ -75,9 +73,7 @@ const getparteners = async (req, res) => {
       console.log(err);
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 module.exports = {

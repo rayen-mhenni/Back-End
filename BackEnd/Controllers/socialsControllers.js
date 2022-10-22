@@ -66,9 +66,7 @@ const deletesocials = async (req, res) => {
     .catch((err) => {
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 const getsocials = async (req, res) => {
@@ -80,9 +78,7 @@ const getsocials = async (req, res) => {
       console.log(err);
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 module.exports = {

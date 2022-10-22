@@ -64,9 +64,7 @@ const deletereservation = async (req, res) => {
       console.log(err);
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 const getreservation = async (req, res) => {
@@ -79,9 +77,7 @@ const getreservation = async (req, res) => {
       console.log(err);
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 module.exports = {

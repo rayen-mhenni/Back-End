@@ -62,9 +62,7 @@ const deletesliders = async (req, res) => {
     .catch((err) => {
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 const getsliders = async (req, res) => {
@@ -76,9 +74,7 @@ const getsliders = async (req, res) => {
       console.log(err);
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 module.exports = {

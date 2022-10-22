@@ -62,9 +62,7 @@ const deleteinfos = async (req, res) => {
       console.log(err);
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 const getinfos = async (req, res) => {
@@ -77,9 +75,7 @@ const getinfos = async (req, res) => {
       console.log(err);
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 module.exports = {

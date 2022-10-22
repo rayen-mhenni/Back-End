@@ -69,15 +69,13 @@ const deletedata = async (req, res) => {
       console.log(err);
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 
 
 const getdata = async (req, res) => {
-  knex("data")
+  await knex("data")
     .where({})
     .then((rows) => {
       res.json(rows).status(200);
@@ -86,9 +84,7 @@ const getdata = async (req, res) => {
       console.log(err);
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+   
 };
 
 

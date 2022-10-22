@@ -65,9 +65,7 @@ const deletearticles = async (req, res) => {
       console.log(err);
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 
@@ -82,9 +80,7 @@ const getarticles = async (req, res) => {
       console.log(err);
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 const getarticlesBytitle = async (req, res) => {
@@ -98,9 +94,7 @@ const getarticlesBytitle = async (req, res) => {
       console.log(err);
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 module.exports = {

@@ -57,9 +57,7 @@ const deletesimulations = async (req, res) => {
     .catch((err) => {
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 const getsimulations = async (req, res) => {
@@ -71,9 +69,7 @@ const getsimulations = async (req, res) => {
       console.log(err);
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 module.exports = {

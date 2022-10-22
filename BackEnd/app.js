@@ -97,6 +97,10 @@ app.use("/api/simulations", SimulationRoutes);
 const servicesRoutes = require("./Routers/servicesRouters");
 app.use("/api/services", servicesRoutes);
 
+const DataRoutes = require("./Routers/dataRouters");
+app.use("/api/data", DataRoutes);
+
+
 app.get("/", (req, res) => {
   res.send("Api is Running Boy :=) ");
 });

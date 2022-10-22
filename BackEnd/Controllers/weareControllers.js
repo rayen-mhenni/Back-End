@@ -54,9 +54,7 @@ const deleteweare = async (req, res) => {
     .catch((err) => {
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 const getweare = async (req, res) => {
@@ -68,9 +66,7 @@ const getweare = async (req, res) => {
       console.log(err);
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 const getweareBytitle = async (req, res) => {
@@ -84,9 +80,7 @@ const getweareBytitle = async (req, res) => {
       console.log(err);
       throw err;
     })
-    .finally(() => {
-      knex.destroy();
-    });
+ 
 };
 
 module.exports = {
