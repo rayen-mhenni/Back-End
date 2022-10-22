@@ -3,75 +3,67 @@ const knex = require('../KnexConfig/config');
 
 require("dotenv").config();
 
-const Addconfig = async (req, res) => {
-  const {frais_gestion,
-    ind_repas,
-    taux_charge ,
-    email_text ,
-    abon_public,
-    notice} = req.body;
-        knex("configurations")
+const Addopinions= async (req, res) => {
+  const { name,
+    poste,
+    rate,
+    opinion} = req.body;
+        knex("opinions")
           .insert(
             {
-              frais_gestion,
-              ind_repas,
-              taux_charge ,
-              email_text ,
-              abon_public,
-              notice,
+              name,
+              poste,
+              rate,
+              opinion,
               created_at: Date.now(),
             }
           )
           .then((user) => {
-            res.json({ message: "config Created " });
+            res.json({ message: "opinions Created " });
           })
           .catch((err) => {
             res
               .json({
                 user: {},
-                error: "check your Data",
+                error: "check your opinions",
               })
               .status(500);
           });
       };
 
-const updateconfig = async (req, res) => {
-  const { frais_gestion,
-    ind_repas,
-    taux_charge ,
-    email_text ,
-    abon_public,
-    notice} = req.body;
+const updateopinions= async (req, res) => {
+  const { name,
+    poste,
+    rate,
+    opinion} = req.body;
 
   const id = req.params.id
-  knex("configurations")
+  knex("opinions")
     .update({
-              frais_gestion,
-              ind_repas,
-              taux_charge ,
-              email_text ,
-              abon_public,
-              notice,
+      name,
+      poste,
+      rate,
+      opinion,
       updated_at: Date.now(),
     })
     .where({ id: id })
     .then((user) => {
-      res.json({ message: "config Updated " });
+      res.json({ message: "opinions Updated " });
     })
     .catch((err) => {
       res
         .json({
           user: {},
-          error: "Check your Data",
+          error: "Check your opinions",
         })
         .status(400);
     });
 };
 
 
-const deleteconfigs = async (req, res) => {
+const deleteopinions = async (req, res) => {
   const id = req.params.id
-  knex("configurations")
+  knex("opinions")
   .where({id:id})
   .delete()
     .then((rows) => {
@@ -88,8 +80,8 @@ const deleteconfigs = async (req, res) => {
 
 
 
-const getconfigs = async (req, res) => {
-  knex("configurations")
+const getopinions = async (req, res) => {
+  knex("opinions")
     .where({})
     .then((rows) => {
       res.json(rows).status(200);
@@ -106,8 +98,8 @@ const getconfigs = async (req, res) => {
 
 
 module.exports = {
-  Addconfig,
-  updateconfig,
-  getconfigs,
-  deleteconfigs
+  Addopinions,
+  updateopinions,
+  deleteopinions,
+  getopinions
 };
