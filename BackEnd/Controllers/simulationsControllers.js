@@ -8,7 +8,7 @@ require("dotenv").config();
 const Addsimulations = async (req, res) => {
   const { email, phone, file } = req.body;
   knex("simulations")
-    .insert({ email, phone, file, created_at: Date.now() })
+    .insert({ email, phone, file, created_at: new Date() })
     .then((user) => {
       res.json({ message: "created with success" });
     })
@@ -30,7 +30,7 @@ const updatesimulations = async (req, res) => {
       email,
       phone,
       file,
-      updated_at: Date.now(),
+      updated_at: new Date()
     })
     .where({ id: id })
     .then((user) => {

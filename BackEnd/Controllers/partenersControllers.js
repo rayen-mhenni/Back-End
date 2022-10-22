@@ -9,7 +9,7 @@ const Addparteners = async (req, res) => {
     .insert({
       image,
       url,
-      created_at: Date.now(),
+      created_at: new Date()
     })
     .then((user) => {
       res.json({ message: "parteners Created " });
@@ -32,7 +32,7 @@ const updateparteners = async (req, res) => {
     .update({
       image,
       url,
-      updated_at: Date.now(),
+      updated_at: new Date()
     })
     .where({ id: id })
     .then((user) => {

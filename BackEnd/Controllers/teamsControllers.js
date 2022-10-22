@@ -8,7 +8,7 @@ require("dotenv").config();
 const Addteams = async (req, res) => {
   const { name, poste, image } = req.body;
   knex("teams")
-    .insert({ name, poste, image, created_at: Date.now() })
+    .insert({ name, poste, image, created_at: new Date() })
     .then((user) => {
       res.json({ message: "created with success" });
     })
@@ -30,7 +30,7 @@ const updateteams = async (req, res) => {
       name,
       poste,
       image,
-      updated_at: Date.now(),
+      updated_at: new Date()
     })
     .where({ id: id })
     .then((user) => {

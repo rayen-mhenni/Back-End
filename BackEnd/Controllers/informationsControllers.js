@@ -10,7 +10,7 @@ const Addinformations = async (req, res) => {
       phone,
       email,
       adress,
-      created_at: Date.now(),
+      created_at: new Date()
     })
     .then((user) => {
       res.json({ message: "information Created " });
@@ -34,7 +34,7 @@ const updateinformations = async (req, res) => {
       phone,
       email,
       adress,
-      updated_at: Date.now(),
+      updated_at: new Date()
     })
     .where({ id: id })
     .then((user) => {

@@ -15,7 +15,7 @@ const Addopinions= async (req, res) => {
               poste,
               rate,
               opinion,
-              created_at: Date.now(),
+              created_at: new Date()
             }
           )
           .then((user) => {
@@ -44,7 +44,7 @@ const updateopinions= async (req, res) => {
       poste,
       rate,
       opinion,
-      updated_at: Date.now(),
+      updated_at: new Date()
     })
     .where({ id: id })
     .then((user) => {

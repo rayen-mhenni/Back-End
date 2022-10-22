@@ -53,7 +53,7 @@ const Adduser = async (req, res) => {
           email: Email,
           password: encryptedPassword,
           name: UserName,
-          created_at: Date.now(),
+          created_at: new Date()
         },
         "eee"
       )
@@ -79,7 +79,7 @@ const updateuser = async (req, res) => {
       email: Email,
       password: encryptedPassword,
       name: UserName,
-      updated_at: Date.now(),
+      updated_at: new Date()
     })
     .where({ email: Email })
     .then((user) => {
@@ -131,7 +131,7 @@ const updatepass = async (req, res) => {
   knex("users")
     .update({
       password: encryptedPassword,
-      updated_at: Date.now(),
+      updated_at: new Date()
     })
     .where({ id: id })
     .then(() => {

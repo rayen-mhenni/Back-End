@@ -17,7 +17,7 @@ const Addcontact= async (req, res) => {
               phone ,
               message ,
               identity,
-              created_at: Date.now(),
+              created_at: new Date()
             }
           )
           .then((user) => {
@@ -48,7 +48,7 @@ const updatecontact= async (req, res) => {
       phone ,
       message ,
       identity,
-      updated_at: Date.now(),
+      updated_at: new Date()
     })
     .where({ id: id })
     .then((user) => {

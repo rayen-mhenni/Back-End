@@ -10,7 +10,7 @@ const Addinfos = async (req, res) => {
       intitle,
       text,
       fa_icon,
-      created_at: Date.now(),
+      created_at: new Date()
     })
     .then((user) => {
       res.json({ message: "infos Created " });
@@ -34,7 +34,7 @@ const updateinfos = async (req, res) => {
       title,
       text,
       fa_icon,
-      updated_at: Date.now(),
+      updated_at: new Date()
     })
     .where({ id: id })
     .then((user) => {

@@ -19,7 +19,7 @@ const Addconfig = async (req, res) => {
               email_text ,
               abon_public,
               notice,
-              created_at: Date.now(),
+              created_at: new Date()
             }
           )
           .then((user) => {
@@ -52,7 +52,7 @@ const updateconfig = async (req, res) => {
               email_text ,
               abon_public,
               notice,
-      updated_at: Date.now(),
+      updated_at: new Date()
     })
     .where({ id: id })
     .then((user) => {

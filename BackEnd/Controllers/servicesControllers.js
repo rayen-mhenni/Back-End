@@ -14,7 +14,7 @@ const Addservices = async (req, res) => {
       fa_icon,
       link,
       description,
-      created_at: Date.now(),
+      created_at: new Date()
     })
     .then((user) => {
       res.json({ message: "created with success" });
@@ -39,7 +39,7 @@ const updateservices = async (req, res) => {
       fa_icon,
       link,
       description,
-      updated_at: Date.now(),
+      updated_at: new Date()
     })
     .where({ id: id })
     .then((user) => {

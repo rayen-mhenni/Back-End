@@ -13,7 +13,7 @@ const Adddata= async (req, res) => {
               data,
               number,
               fa_icon,
-              created_at: Date.now(),
+              created_at: new Date()
             }
           )
           .then((user) => {
@@ -33,14 +33,14 @@ const updatedata= async (req, res) => {
   const { data,
     number,
     fa_icon} = req.body;
-
+console.log("testtt" , data)
   const id = req.params.id
   knex("data")
     .update({
       data,
       number,
       fa_icon,
-      updated_at: Date.now(),
+      updated_at: new Date()
     })
     .where({ id: id })
     .then((user) => {

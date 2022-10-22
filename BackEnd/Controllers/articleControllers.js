@@ -14,7 +14,7 @@ const Addarticle = async (req, res) => {
                content,
                 title ,
                  image ,
-              created_at: Date.now(),
+              created_at: new Date()
             }
           )
           .then((user) => {
@@ -36,7 +36,7 @@ const updatearticle = async (req, res) => {
   knex("articles")
     .update({
       author, content, title , image,
-      updated_at: Date.now(),
+      updated_at: new Date()
     })
     .where({ id: id })
     .then((user) => {

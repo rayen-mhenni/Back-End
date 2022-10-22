@@ -12,7 +12,7 @@ const Addsliders = async (req, res) => {
       image,
       title,
       description,
-      created_at: Date.now(),
+      created_at: new Date()
     })
     .then((user) => {
       res.json({ message: "created with success" });
@@ -35,7 +35,7 @@ const updatesliders = async (req, res) => {
       image,
       title,
       description,
-      updated_at: Date.now(),
+      updated_at: new Date()
     })
     .where({ id: id })
     .then((user) => {
