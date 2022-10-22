@@ -3,27 +3,21 @@ const knex = require('../KnexConfig/config');
 
 require("dotenv").config();
 
-const Addconfig = async (req, res) => {
-  const {frais_gestion,
-    ind_repas,
-    taux_charge ,
-    email_text ,
-    abon_public,
-    notice} = req.body;
-        knex("configurations")
+const Adddata= async (req, res) => {
+  const { data,
+    number,
+    fa_icon } = req.body;
+        knex("data")
           .insert(
             {
-              frais_gestion,
-              ind_repas,
-              taux_charge ,
-              email_text ,
-              abon_public,
-              notice,
+              data,
+              number,
+              fa_icon,
               created_at: Date.now(),
             }
           )
           .then((user) => {
-            res.json({ message: "config Created " });
+            res.json({ message: "data Created " });
           })
           .catch((err) => {
             res
@@ -35,28 +29,22 @@ const Addconfig = async (req, res) => {
           });
       };
 
-const updateconfig = async (req, res) => {
-  const { frais_gestion,
-    ind_repas,
-    taux_charge ,
-    email_text ,
-    abon_public,
-    notice} = req.body;
+const updatedata= async (req, res) => {
+  const { data,
+    number,
+    fa_icon} = req.body;
 
   const id = req.params.id
-  knex("configurations")
+  knex("data")
     .update({
-              frais_gestion,
-              ind_repas,
-              taux_charge ,
-              email_text ,
-              abon_public,
-              notice,
+      data,
+      number,
+      fa_icon,
       updated_at: Date.now(),
     })
     .where({ id: id })
     .then((user) => {
-      res.json({ message: "config Updated " });
+      res.json({ message: "data Updated " });
     })
     .catch((err) => {
       res
@@ -69,9 +57,9 @@ const updateconfig = async (req, res) => {
 };
 
 
-const deleteconfigs = async (req, res) => {
+const deletedata = async (req, res) => {
   const id = req.params.id
-  knex("configurations")
+  knex("data")
   .where({id:id})
   .delete()
     .then((rows) => {
@@ -88,8 +76,8 @@ const deleteconfigs = async (req, res) => {
 
 
 
-const getconfigs = async (req, res) => {
-  knex("configurations")
+const getdata = async (req, res) => {
+  knex("data")
     .where({})
     .then((rows) => {
       res.json(rows).status(200);
@@ -106,8 +94,8 @@ const getconfigs = async (req, res) => {
 
 
 module.exports = {
-  Addconfig,
-  updateconfig,
-  getconfigs,
-  deleteconfigs
+  Adddata,
+  updatedata,
+  deletedata,
+  getdata
 };

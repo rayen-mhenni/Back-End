@@ -64,11 +64,36 @@ app.use("/api/weare", WeareRoutes);
 const TeamsRoutes = require("./Routers/teamsRouters");
 app.use("/api/teams", TeamsRoutes);
 
+const ConfigRoutes = require("./Routers/configRouters");
+app.use("/api/config", ConfigRoutes);
+
+const ContactRoutes = require("./Routers/contactRouters");
+app.use("/api/contact", ContactRoutes);
+
 const SocialsRoutes = require("./Routers/socialsRouters");
 app.use("/api/socials", SocialsRoutes);
 
 const SlidersRoutes = require("./Routers/slidersRouters");
 app.use("/api/sliders", SlidersRoutes);
+
+
+const InformationsRoutes = require("./Routers/informationsRouters");
+app.use("/api/informations", InformationsRoutes);
+
+const InfosRoutes = require("./Routers/infosRouters");
+app.use("/api/infos", InfosRoutes);
+
+const OpinionsRoutes = require("./Routers/opinionsRouters");
+app.use("/api/opinions", OpinionsRoutes);
+
+const PartenersRoutes = require("./Routers/partenersRouters");
+app.use("/api/parteners", PartenersRoutes);
+
+const ReservationRoutes = require("./Routers/reservationRouters");
+app.use("/api/reservation", ReservationRoutes);
+
+
+
 
 const SimulationRoutes = require("./Routers/simulationsRouters");
 app.use("/api/simulations", SimulationRoutes);
@@ -79,6 +104,8 @@ app.use("/api/services", servicesRoutes);
 app.get("/", (req, res) => {
   res.send("Api is Running Boy :=) ");
 });
+
+
 
 app.listen(process.env.PORT, () => {
   console.log(
