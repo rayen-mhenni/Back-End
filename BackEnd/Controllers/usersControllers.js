@@ -68,7 +68,6 @@ const Adduser = async (req, res) => {
           })
           .status(401);
       })
-      .finally(() => knex.destroy());
   }
 };
 
