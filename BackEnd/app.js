@@ -3,6 +3,7 @@ require("dotenv").config();
 const app = express();
 app.use(express.json());
 const multer = require("multer");
+
 const path = require("path");
 
 app.use((req, res, next) => {
@@ -17,7 +18,7 @@ app.use((req, res, next) => {
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
-    cb(null, "../covidtest_o/src/uploads");
+    cb(null, "./uploads");
   },
   filename(req, file, cb) {
     cb(null, `${file.originalname}`);
