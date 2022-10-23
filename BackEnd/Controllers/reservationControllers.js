@@ -52,6 +52,28 @@ const updatereservation = async (req, res) => {
     });
 };
 
+const updatereservationStatus = async (req, res) => {
+  const {status} = req.body;
+
+  const id = req.params.id;
+  knex("reservation")
+    .update({
+      status
+    })
+    .where({ id: id })
+    .then((user) => {
+      res.json({ message: "reservation Updated " + status });
+    })
+    .catch((err) => {
+      res
+        .json({
+          user: {},
+          error: "Check your reservation",
+        })
+        .status(400);
+    });
+};
+
 const deletereservation = async (req, res) => {
   const id = req.params.id;
   knex("reservation")
@@ -85,4 +107,5 @@ module.exports = {
   updatereservation,
   deletereservation,
   getreservation,
+  updatereservationStatus
 };
