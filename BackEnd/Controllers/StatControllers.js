@@ -12,6 +12,7 @@ const getnbSimulation = async (req, res) => {
       "created_at",
       "like",
       `%${new Date().toISOString().substring(0, 10)}%`
+      
     )
     .count("id as nb")
     .then((rows) => {
