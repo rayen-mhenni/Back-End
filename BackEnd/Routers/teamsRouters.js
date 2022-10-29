@@ -5,7 +5,7 @@ const {
   updateteams,
   getteams,
   deleteteams,
-} = require("../controllers/teamsControllers");
+} = require("../Controllers/teamsControllers");
 
 const verifyToken = require("../Middellware/AuthMiddelware");
 

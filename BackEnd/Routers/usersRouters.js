@@ -7,7 +7,7 @@ const {
   getusers,
   resetpass,
   updatepass
-} = require("../controllers/usersControllers");
+} = require("../Controllers/usersControllers");
 
 const verifyToken = require("../Middellware/AuthMiddelware");
 

@@ -5,7 +5,7 @@ const {
   updateservices,
   getservices,
   deleteservices,
-} = require("../controllers/servicesControllers");
+} = require("../Controllers/servicesControllers");
 
 const verifyToken = require("../Middellware/AuthMiddelware");
 

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Addarticle, getarticles, updatearticle, deletearticles, getarticlesBytitle } = require("../controllers/articleControllers");
+const { Addarticle, getarticles, updatearticle, deletearticles, getarticlesBytitle } = require("../Controllers/articleControllers");
 
 const verifyToken = require("../Middellware/AuthMiddelware");
 

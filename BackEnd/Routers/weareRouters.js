@@ -6,7 +6,7 @@ const {
   getweare,
   deleteweare,
   getweareBytitle,
-} = require("../controllers/weareControllers");
+} = require("../Controllers/weareControllers");
 
 const verifyToken = require("../Middellware/AuthMiddelware");
 

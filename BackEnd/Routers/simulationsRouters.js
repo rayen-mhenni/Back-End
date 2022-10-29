@@ -5,7 +5,7 @@ const {
   updatesimulations,
   getsimulations,
   deletesimulations,
-} = require("../controllers/simulationsControllers");
+} = require("../Controllers/simulationsControllers");
 
 const verifyToken = require("../Middellware/AuthMiddelware");
 

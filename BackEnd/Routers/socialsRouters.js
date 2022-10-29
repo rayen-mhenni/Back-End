@@ -5,7 +5,7 @@ const {
   updatesocials,
   getsocials,
   deletesocials,
-} = require("../controllers/socialsControllers");
+} = require("../Controllers/socialsControllers");
 
 const verifyToken = require("../Middellware/AuthMiddelware");
 

@@ -5,7 +5,7 @@ const {
   updatesliders,
   getsliders,
   deletesliders,
-} = require("../controllers/slidersControllers");
+} = require("../Controllers/slidersControllers");
 
 const verifyToken = require("../Middellware/AuthMiddelware");
 
