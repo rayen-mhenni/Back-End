@@ -54,8 +54,7 @@ const Adduser = async (req, res) => {
           password: encryptedPassword,
           name: UserName,
           created_at: new Date()
-        },
-        "eee"
+        }
       )
       .then((user) => {
         res.json({ message: "User Created " });
