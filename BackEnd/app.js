@@ -104,6 +104,9 @@ app.use("/api/data", DataRoutes);
 const StatsRoutes = require("./Routers/StatRouters");
 app.use("/api/stat", StatsRoutes);
 
+const EmailRoutes = require("./Routers/emailRouters");
+app.use("/api/emails", EmailRoutes);
+
 
 app.get("/", (req, res) => {
   res.send("Api is Running Boy :=) ");
