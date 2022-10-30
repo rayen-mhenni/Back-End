@@ -5,6 +5,7 @@ app.use(express.json());
 const multer = require("multer");
 
 const path = require("path");
+const pathimg='../../Portalite/src/assets/uploads';
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -18,7 +19,7 @@ app.use((req, res, next) => {
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
-    cb(null, "../../Portalite/src/assets/uploads");
+    cb(null, pathimg);
   },
   filename(req, file, cb) {
     cb(null, `${file.originalname}`);
@@ -52,6 +53,14 @@ app.post("/api/upload", upload.single("image"), (req, res) => {
 
   res.send(req.file.location);
 });
+
+
+
+//GET IMAGE 
+app.get('/images/:filename', function (request, response) {
+  response.sendFile(request.params.filename, { root: pathimg })
+})
+
 
 const UserRoutes = require("./Routers/usersRouters");
 app.use("/api/users", UserRoutes);

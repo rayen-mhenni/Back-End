@@ -6,7 +6,6 @@ const knex = require("../KnexConfig/config");
 require("dotenv").config();
 
 const getnbSimulation = async (req, res) => {
-  console.log(`%${new Date().toISOString().substring(0, 10)}%`);
   knex("simulations")
     .where(
       "created_at",
@@ -25,7 +24,7 @@ const getnbSimulation = async (req, res) => {
 };
 
 const getnbMeeting = async (req, res) => {
-  console.log(`%${new Date().toISOString().substring(0, 10)}%`);
+
   knex("reservation")
     .count("id as nb")
 
@@ -40,7 +39,7 @@ const getnbMeeting = async (req, res) => {
 };
 
 const getnbcontacts = async (req, res) => {
-  console.log(`%${new Date().toISOString().substring(0, 10)}%`);
+
   knex("contacts")
     .where(
       "created_at",
