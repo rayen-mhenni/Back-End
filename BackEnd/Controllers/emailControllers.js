@@ -48,7 +48,7 @@ const updateEmailByReference = async (req, res) => {
 };
 
 const getEmailByReference = async (req, res) => {
-  const { reference } = req.body;
+  const reference  = req.params.ref;
 
   knex("emailtemplate")
     .where({reference:reference})
