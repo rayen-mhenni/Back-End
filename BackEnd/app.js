@@ -74,8 +74,9 @@ app.use("/api/weare", WeareRoutes);
 const TeamsRoutes = require("./Routers/teamsRouters");
 app.use("/api/teams", TeamsRoutes);
 
-const ConfigRoutes = require("./Routers/configRouters");
-app.use("/api/config", ConfigRoutes);
+const ConfigRoutes = require("./Routers/configurationsRouters");
+app.use("/api/configurations", ConfigRoutes);
+
 
 const ContactRoutes = require("./Routers/contactRouters");
 app.use("/api/contact", ContactRoutes);

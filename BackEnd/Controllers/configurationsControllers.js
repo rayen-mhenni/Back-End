@@ -9,7 +9,8 @@ const Addconfig = async (req, res) => {
     taux_charge ,
     email_text ,
     abon_public,
-    notice} = req.body;
+    notice,
+    status} = req.body;
         knex("configurations")
           .insert(
             {
@@ -19,6 +20,7 @@ const Addconfig = async (req, res) => {
               email_text ,
               abon_public,
               notice,
+              status,
               created_at: new Date()
             }
           )
@@ -41,7 +43,8 @@ const updateconfig = async (req, res) => {
     taux_charge ,
     email_text ,
     abon_public,
-    notice} = req.body;
+    notice,
+    status} = req.body;
 
   const id = req.params.id
   knex("configurations")
@@ -52,6 +55,7 @@ const updateconfig = async (req, res) => {
               email_text ,
               abon_public,
               notice,
+              status,
       updated_at: new Date()
     })
     .where({ id: id })
@@ -68,6 +72,28 @@ const updateconfig = async (req, res) => {
     });
 };
 
+
+const updateconfigstatus = async (req, res) => {
+  const {status } = req.body;
+
+  const id = req.params.id
+  knex("configurations")
+    .update({
+      status
+    })
+    .where({ id: id })
+    .then((user) => {
+      res.json({ message: "config Updated " });
+    })
+    .catch((err) => {
+      res
+        .json({
+          user: {},
+          error: "Check your Data",
+        })
+        .status(400);
+    });
+};
 
 const deleteconfigs = async (req, res) => {
   const id = req.params.id
@@ -105,5 +131,6 @@ module.exports = {
   Addconfig,
   updateconfig,
   getconfigs,
-  deleteconfigs
+  deleteconfigs,
+  updateconfigstatus
 };
