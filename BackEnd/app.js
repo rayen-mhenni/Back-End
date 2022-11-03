@@ -77,6 +77,8 @@ app.use("/api/teams", TeamsRoutes);
 const ConfigRoutes = require("./Routers/configurationsRouters");
 app.use("/api/configurations", ConfigRoutes);
 
+const PagesRoutes = require("./Routers/pagesRouters");
+app.use("/api/pages", PagesRoutes);
 
 const ContactRoutes = require("./Routers/contactRouters");
 app.use("/api/contact", ContactRoutes);
