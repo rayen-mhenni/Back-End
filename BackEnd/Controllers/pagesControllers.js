@@ -4,11 +4,11 @@ const knex = require('../KnexConfig/config');
 require("dotenv").config();
 
 const Addpages= async (req, res) => {
-  const { name , code } = req.body;
+  const {  name , code , navid } = req.body;
         knex("pages")
           .insert(
             {
-          name , code,
+              name , code , navid,
               created_at: new Date()
             }
           )
@@ -26,11 +26,11 @@ const Addpages= async (req, res) => {
       };
 
 const updatepages= async (req, res) => {
-  const {  name , code} = req.body;
+  const {  name , code , navid} = req.body;
   const id = req.params.id
   knex("pages")
     .update({
-      name , code,
+      name , code,navid,
       updated_at: new Date()
     })
     .where({ id: id })
