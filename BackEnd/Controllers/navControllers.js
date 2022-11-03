@@ -49,15 +49,27 @@ const updatenavigation = async (req, res) => {
 
 const deletenavigation = async (req, res) => {
   const id = req.params.id;
-  knex("navigation")
-    .where({ id: id, parentid: id })
+  let rowsres = [];
+  await knex("navigation")
+    .where({ id: id })
     .delete()
     .then((rows) => {
-      res.json(rows).status(200);
+      rowsres.push(rows);
     })
     .catch((err) => {
       throw err;
     });
+  await knex("navigation")
+    .where({ parentid: id })
+    .delete()
+    .then((rows) => {
+      rowsres.push(rows);
+    })
+    .catch((err) => {
+      throw err;
+    });
+
+  res.json(rowsres).status(200);
 };
 
 const getnavigation = async (req, res) => {
