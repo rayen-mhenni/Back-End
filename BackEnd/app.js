@@ -119,6 +119,9 @@ app.use("/api/stat", StatsRoutes);
 const EmailRoutes = require("./Routers/emailRouters");
 app.use("/api/emails", EmailRoutes);
 
+const NavRoutes = require("./Routers/navRouters");
+app.use("/api/nav", NavRoutes);
+
 
 app.get("/", (req, res) => {
   res.send("Api is Running Boy :=) ");
