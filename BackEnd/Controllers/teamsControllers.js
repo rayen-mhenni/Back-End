@@ -6,9 +6,9 @@ const knex = require("../KnexConfig/config");
 require("dotenv").config();
 
 const Addteams = async (req, res) => {
-  const { name, poste, image } = req.body;
+  const { name, poste, image,facebook , twitter , linkedin  } = req.body;
   knex("teams")
-    .insert({ name, poste, image, created_at: new Date() })
+    .insert({ name, poste, image,facebook , twitter , linkedin , created_at: new Date() })
     .then((user) => {
       res.json({ message: "created with success" });
     })
@@ -23,13 +23,11 @@ const Addteams = async (req, res) => {
 };
 
 const updateteams = async (req, res) => {
-  const { name, poste, image } = req.body;
+  const { name, poste, image,facebook , twitter , linkedin   } = req.body;
   const id = req.params.id;
   knex("teams")
     .update({
-      name,
-      poste,
-      image,
+      name, poste, image,facebook , twitter , linkedin , 
       updated_at: new Date()
     })
     .where({ id: id })

@@ -107,6 +107,9 @@ app.use("/api/reservation", ReservationRoutes);
 const SimulationRoutes = require("./Routers/simulationsRouters");
 app.use("/api/simulations", SimulationRoutes);
 
+const gestionRouters = require("./Routers/gestionRouters");
+app.use("/api/gestion", gestionRouters);
+
 const servicesRoutes = require("./Routers/servicesRouters");
 app.use("/api/services", servicesRoutes);
 
