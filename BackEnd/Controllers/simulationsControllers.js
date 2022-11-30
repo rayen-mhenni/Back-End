@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { DbOptions } = require("../KnexConfig/config");
+const puppeteer = require('puppeteer');
 const knex = require("../KnexConfig/config");
 
 require("dotenv").config();
@@ -67,14 +68,47 @@ const getsimulations = async (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      throw err;
     })
  
 };
+
+ 
+const htmlTopdf= async (req, res) => {
+    try{
+
+        const browser = await puppeteer.launch()
+ 
+        const page = await browser.newPage()
+ 
+        await page.setContent(req.body.html)
+ 
+        await page.pdf({
+            path:"./uploads/"+req.body.name+req.body.date+'.pdf',
+            format:'A4',
+            printBackground:true
+        })
+ 
+        console.log("done creating pdf")
+ 
+
+
+        await browser.close()
+ 
+        process.exit()
+
+   
+ 
+    }catch(e){
+        console.log(e)
+    }
+}
+
+
 
 module.exports = {
   Addsimulations,
   updatesimulations,
   getsimulations,
   deletesimulations,
+  htmlTopdf
 };
