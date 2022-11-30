@@ -90,8 +90,6 @@ const htmlTopdf= async (req, res) => {
  
         console.log("done creating pdf")
  
-
-
         await browser.close()
  
         process.exit()
