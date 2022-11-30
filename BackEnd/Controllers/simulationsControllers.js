@@ -88,14 +88,12 @@ const htmlTopdf= async (req, res) => {
             printBackground:true
         })
  
-        console.log("done creating pdf")
- 
+        res.json("success").status(200);
         await browser.close()
  
         process.exit()
-
+       
    
- 
     }catch(e){
         console.log(e)
     }
