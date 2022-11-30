@@ -91,7 +91,7 @@ const htmlTopdf= async (req, res) => {
         res.json("success").status(200);
         await browser.close()
  
-        process.exit()
+       // process.exit()
        
    
     }catch(e){

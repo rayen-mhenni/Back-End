@@ -65,6 +65,10 @@ const getnbSimulationNbr = async (req, res) => {
   let August = 0;
   let September = 0;
 
+  let oct = 0;
+  let nouv = 0;
+  let des = 0;
+
   
 
   await knex("simulations")
@@ -168,6 +172,40 @@ const getnbSimulationNbr = async (req, res) => {
       throw err;
     });
 
+  await knex("simulations")
+    .where("created_at", "like", '%-10%')
+    .count("id as nb")
+    .then((rows) => {
+      oct = rows[0].nb;
+    })
+    .catch((err) => {
+      console.log(err);
+      throw err;
+    });
+
+  await knex("simulations")
+    .where("created_at", "like", '%-11%')
+    .count("id as nb")
+    .then((rows) => {
+      nouv = rows[0].nb;
+    })
+    .catch((err) => {
+      console.log(err);
+      throw err;
+    });
+
+    
+  await knex("simulations")
+  .where("created_at", "like", '%-12%')
+  .count("id as nb")
+  .then((rows) => {
+    des = rows[0].nb;
+  })
+  .catch((err) => {
+    console.log(err);
+    throw err;
+  });
+
 
  var months = [
       
@@ -180,6 +218,9 @@ const getnbSimulationNbr = async (req, res) => {
         July,
         August,
         September,
+        oct,
+        nouv,
+        des
     
     ];
 

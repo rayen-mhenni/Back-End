@@ -8,6 +8,6 @@ visit
 const verifyToken = require("../Middellware/AuthMiddelware");
 
 router.route("/").post(visit);
-router.get("/visite").post(getvisit);
+router.route("/visite").get(getvisit);
 
 module.exports = router;
