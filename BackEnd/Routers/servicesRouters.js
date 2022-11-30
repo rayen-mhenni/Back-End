@@ -10,7 +10,7 @@ const {
 const verifyToken = require("../Middellware/AuthMiddelware");
 
 router.route("/add").post(Addservices);
-router.route("/").get(verifyToken, getservices);
+router.route("/").get(getservices);
 router.route("/update/:id").put(verifyToken, updateservices);
 router.route("/delete/:id").delete(verifyToken, deleteservices);
 

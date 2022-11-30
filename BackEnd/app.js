@@ -5,7 +5,7 @@ app.use(express.json());
 const multer = require("multer");
 
 const path = require("path");
-const pathimg='../../Portalite/src/assets/uploads';
+const pathimg='./uploads';
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -27,14 +27,14 @@ const storage = multer.diskStorage({
 });
 
 function checkFileType(file, cb) {
-  const filetypes = /jpg|jpeg|png/;
+  const filetypes = /jpg|jpeg|png|pdf/;
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
   const mimetype = filetypes.test(file.mimetype);
 
   if (extname && mimetype) {
     return cb(null, true);
   } else {
-    cb("Images only!");
+    cb("Images or pdf only!");
   }
 }
 
@@ -53,6 +53,7 @@ app.post("/api/upload", upload.single("image"), (req, res) => {
 
   res.send(req.file.location);
 });
+
 
 
 
@@ -124,6 +125,10 @@ app.use("/api/emails", EmailRoutes);
 
 const NavRoutes = require("./Routers/navRouters");
 app.use("/api/nav", NavRoutes);
+
+const VisitRoutes = require("./Routers/VisitRoutes");
+app.use("/api/visite", VisitRoutes );
+
 
 
 app.get("/", (req, res) => {

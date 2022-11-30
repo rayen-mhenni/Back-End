@@ -5,7 +5,7 @@ const router = express.Router();
 const verifyToken = require("../Middellware/AuthMiddelware");
 
 router.route("/add").post(Addgestion);
-router.route("/").get(verifyToken, getgestion);
+router.route("/").get(getgestion);
 router.route("/update/:id").put(verifyToken, updategestion);
 router.route("/delete/:id").delete(verifyToken, deletegestion);
 

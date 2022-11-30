@@ -11,8 +11,8 @@ const {
 const verifyToken = require("../Middellware/AuthMiddelware");
 
 router.route("/add").post(AddEmail);
-router.route("/all").get(verifyToken, getAllemail);
-router.route("/:ref").get(verifyToken, getEmailByReference);
+router.route("/all").get(getAllemail);
+router.route("/:ref").get(getEmailByReference);
 router.route("/update").put(verifyToken, updateEmailByReference);
 router.route("/delete").delete(deleteEmail);
 

@@ -83,10 +83,11 @@ const getarticles = async (req, res) => {
  
 };
 
-const getarticlesBytitle = async (req, res) => {
-  const {title} = req.body
+
+const getarticlesById = async (req, res) => {
+  const id = req.params.id
   knex("articles")
-    .where({title:title})
+    .where({id:id})
     .then((rows) => {
       res.json(rows).status(200);
     })
@@ -96,11 +97,10 @@ const getarticlesBytitle = async (req, res) => {
     })
  
 };
-
 module.exports = {
   Addarticle,
   updatearticle,
   getarticles,
   deletearticles,
-  getarticlesBytitle
+  getarticlesById
 };

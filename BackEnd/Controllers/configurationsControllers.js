@@ -126,11 +126,26 @@ const getconfigs = async (req, res) => {
 };
 
 
+const getconfigsActive = async (req, res) => {
+  knex("configurations")
+    .where({status:'ACTIVE'})
+    .then((rows) => {
+      res.json(rows).status(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      throw err;
+    })
+ 
+};
+
+
 
 module.exports = {
   Addconfig,
   updateconfig,
   getconfigs,
   deleteconfigs,
-  updateconfigstatus
+  updateconfigstatus,
+getconfigsActive 
 };

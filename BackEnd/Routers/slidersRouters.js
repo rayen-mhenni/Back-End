@@ -10,7 +10,7 @@ const {
 const verifyToken = require("../Middellware/AuthMiddelware");
 
 router.route("/add").post(Addsliders);
-router.route("/").get(verifyToken, getsliders);
+router.route("/").get(getsliders);
 router.route("/update/:id").put(verifyToken, updatesliders);
 router.route("/delete/:id").delete(verifyToken, deletesliders);
 
