@@ -12,6 +12,7 @@ const Addreservation = async (req, res) => {
       name,
       date,
       type,
+      created_at: new Date()
     })
     .then((user) => {
       res.json({ message: "reservation Created " });
