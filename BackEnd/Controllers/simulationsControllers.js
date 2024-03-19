@@ -76,7 +76,11 @@ const getsimulations = async (req, res) => {
 const htmlTopdf= async (req, res) => {
     try{
 
-        const browser = await puppeteer.launch()
+
+        const browser = await puppeteer.launch({
+headless: true,
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+});
  
         const page = await browser.newPage()
  
@@ -89,7 +93,7 @@ const htmlTopdf= async (req, res) => {
         })
  
         res.json("success").status(200);
-        //await browser.close()
+        await browser.close()
  
        // process.exit()
        
@@ -98,7 +102,6 @@ const htmlTopdf= async (req, res) => {
         console.log(e)
     }
 }
-
 
 
 module.exports = {

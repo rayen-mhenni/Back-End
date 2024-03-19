@@ -5,6 +5,7 @@ const knex = require('../KnexConfig/config');
 
 require("dotenv").config();
 
+
 const Addarticle = async (req, res) => {
   const { author, content, title , image } = req.body;
         knex("articles")

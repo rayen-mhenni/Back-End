@@ -159,8 +159,24 @@ const getusers = async (req, res) => {
  
 };
 
+const deleteuser = async (req, res) => {
+  const id = req.params.id;
+  knex("users")
+    .where({ id: id })
+    .delete()
+    .then((rows) => {
+      res.json(rows).status(200);
+    })
+    .catch((err) => {
+      throw err;
+    })
+ 
+};
+
+
 module.exports = {
   authUser,
+deleteuser ,
   Adduser,
   updateuser,
   getusers,
