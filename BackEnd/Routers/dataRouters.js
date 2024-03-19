@@ -3,11 +3,10 @@ const { Adddata, updatedata, deletedata, getdata } = require("../Controllers/dat
 
 const router = express.Router();
 
-
 const verifyToken = require("../Middellware/AuthMiddelware");
 
-router.route("/add").post(Adddata);
-router.route("/").get( getdata);
+router.route("/add").post(verifyToken, Adddata);
+router.route("/").get(getdata);
 router.route("/update/:id").put(verifyToken, updatedata);
 router.route("/delete/:id").delete(verifyToken, deletedata);
 

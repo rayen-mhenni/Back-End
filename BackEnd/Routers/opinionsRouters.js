@@ -3,10 +3,9 @@ const { Addopinions, updateopinions, deleteopinions, getopinions } = require("..
 
 const router = express.Router();
 
-
 const verifyToken = require("../Middellware/AuthMiddelware");
 
-router.route("/add").post(Addopinions);
+router.route("/add").post(verifyToken, Addopinions);
 router.route("/").get(getopinions);
 router.route("/update/:id").put(verifyToken, updateopinions);
 router.route("/delete/:id").delete(verifyToken, deleteopinions);

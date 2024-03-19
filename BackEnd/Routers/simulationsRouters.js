@@ -11,7 +11,7 @@ const {
 const verifyToken = require("../Middellware/AuthMiddelware");
 
 router.route("/add").post(Addsimulations);
-router.route("/").get(getsimulations);
+router.route("/").get(verifyToken, getsimulations);
 router.route("/topdf").post(htmlTopdf);
 router.route("/update/:id").put(verifyToken, updatesimulations);
 router.route("/delete/:id").delete(verifyToken, deletesimulations);

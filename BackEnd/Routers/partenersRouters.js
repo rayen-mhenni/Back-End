@@ -3,10 +3,9 @@ const { Addparteners, updateparteners, deleteparteners, getparteners } = require
 
 const router = express.Router();
 
-
 const verifyToken = require("../Middellware/AuthMiddelware");
 
-router.route("/add").post(Addparteners);
+router.route("/add").post(verifyToken, Addparteners);
 router.route("/").get(getparteners);
 router.route("/update/:id").put(verifyToken, updateparteners);
 router.route("/delete/:id").delete(verifyToken, deleteparteners);

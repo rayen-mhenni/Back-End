@@ -3,10 +3,9 @@ const { getpages, Addpages, updatepages, deletepages } = require("../Controllers
 
 const router = express.Router();
 
-
 const verifyToken = require("../Middellware/AuthMiddelware");
 
-router.route("/add").post(Addpages);
+router.route("/add").post(verifyToken, Addpages);
 router.route("/").get(getpages);
 router.route("/update/:id").put(verifyToken, updatepages);
 router.route("/delete/:id").delete(verifyToken, deletepages);
