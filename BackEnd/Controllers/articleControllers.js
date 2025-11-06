@@ -7,25 +7,40 @@ require("dotenv").config();
 
 
 const Addarticle = async (req, res) => {
+let list = 0;
+
+ knex("articles")
+    .where({})
+    .then((rows) => {
+      list = rows.length
+    })
+    .catch((err) => {
+      console.log(err);
+      throw err;
+    })
+
+
   const { author, content, title , image } = req.body;
         knex("articles")
           .insert(
             {
+		id:list,
               author,
                content,
                 title ,
                  image ,
-              created_at: new Date()
+              created_at: new Date(),
+		updated_at:new Date()
             }
           )
           .then((user) => {
-            res.json({ message: "article Created " });
+            res.json(user);
           })
           .catch((err) => {
             res
               .json({
                 user: {},
-                error: "check your Data",
+                error: err,
               })
               .status(500);
           });

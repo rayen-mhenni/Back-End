@@ -19,13 +19,13 @@ const Addopinions= async (req, res) => {
             }
           )
           .then((user) => {
-            res.json({ message: "opinions Created " });
+            res.json({ user });
           })
           .catch((err) => {
             res
               .json({
                 user: {},
-                error: "check your opinions",
+                error: err,
               })
               .status(500);
           });

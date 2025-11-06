@@ -70,6 +70,7 @@ const deletesocials = async (req, res) => {
 };
 
 const getsocials = async (req, res) => {
+console.log("tesssst",knex.client.connectionSettings);
   knex("socials")
     .then((rows) => {
       res.json(rows).status(200);

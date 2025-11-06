@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { authUser, Adduser, updateuser, getusers, resetpass, updatepass, deleteuser } = require("../Controllers/usersControllers");
+const { authUser, Adduser, updateuser, getusers, resetpass, updatepass, deleteuser  } = require("../Controllers/usersControllers");
 
 const verifyToken = require("../Middellware/AuthMiddelware");
 
@@ -11,5 +11,6 @@ router.route("/update").put(verifyToken, updateuser);
 router.route("/resetpassword").put(resetpass);
 router.route("/updatepassword/:id").put(verifyToken, updatepass);
 router.route("/delete/:id").delete(verifyToken, deleteuser);
+
 
 module.exports = router;

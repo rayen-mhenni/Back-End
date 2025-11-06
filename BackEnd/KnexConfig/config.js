@@ -1,16 +1,15 @@
 module.exports = require("knex")({
   client: "mysql2",
   connection: {
-    host: "45.13.252.43",
+    host: "127.0.0.1",
     port: 3306,
-    user: "u468378300_portalite",
-    password: "Portalite=22",
-    database: "u468378300_portalite",
+    user: "root",
+    password: "ADMIN",
+    database: "DB",
     connectTimeout: 60000
   },
   pool: {
     min: 2,
-
     // maximum size
     max: 500,
   
@@ -41,6 +40,6 @@ module.exports = require("knex")({
     // rejected with the error. If this is false (the default) then
     // create is retried until acquireTimeoutMillis milliseconds has
     // passed.
-    propagateCreateError: false
+    propagateCreateError: true
   },
 });

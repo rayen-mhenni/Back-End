@@ -10,6 +10,9 @@ const Addconfig = async (req, res) => {
     email_text ,
     abon_public,
     notice,
+wawashi,
+igd_province,
+igd_ile_france,
     status} = req.body;
         knex("configurations")
           .insert(
@@ -21,6 +24,9 @@ const Addconfig = async (req, res) => {
               abon_public,
               notice,
               status,
+wawashi,
+igd_province,
+igd_ile_france,
               created_at: new Date()
             }
           )
@@ -44,6 +50,9 @@ const updateconfig = async (req, res) => {
     email_text ,
     abon_public,
     notice,
+wawashi,
+igd_province,
+igd_ile_france,
     status} = req.body;
 
   const id = req.params.id
@@ -54,6 +63,9 @@ const updateconfig = async (req, res) => {
               taux_charge ,
               email_text ,
               abon_public,
+wawashi,
+igd_province,
+igd_ile_france,
               notice,
               status,
       updated_at: new Date()
